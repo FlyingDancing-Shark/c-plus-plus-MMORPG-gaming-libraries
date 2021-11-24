@@ -34,3 +34,16 @@ bool DeliveryNotificationManager::ProcessSequenceNumber(
     }
 } 
 
+
+void DeliveryNotificationManager::AddPendingAck(
+                                      PacketSequenceNumber inSequenceNumber)
+{
+     if(mPendingAcks.size() == 0 ||!mPendingAcks.back().ExtendIfShould(inSequenceNumber))
+     {
+          mPendingAcks.emplace_back(inSequenceNumber);
+     }
+} 
+
+
+
+
