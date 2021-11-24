@@ -20,12 +20,12 @@ bool DeliveryNotificationManager::ProcessSequenceNumber(
          AddPendingAck(sequenceNumber); 
          return true;
      }
-                // arrived out of order, so drop expired packet
+                // I want no.4 but you send me no.3 ,so...
      else if(sequenceNumber < mNextExpectedSequenceNumber)   
      {
         return false;
      }
-                // miss a previously packet, proceed to current one
+                // I want no.4 but you send me no.5 ,so...
      else if(sequenceNumber > mNextExpectedSequenceNumber)
     {
          mNextExpectedSequenceNumber = sequenceNumber + 1;
